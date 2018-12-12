@@ -6,7 +6,12 @@ module Guiry
       end
 
       def execute
-        TTY::Command.new("git status")
+        require 'tty-command'
+        cmd = TTY::Command.new()
+        result = cmd.run('git status')
+        result.each do  |line|
+          puts line
+        end
       end
     end
   end
